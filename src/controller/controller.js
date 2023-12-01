@@ -47,6 +47,15 @@ const getAnswerById = (req, res)=>{
   })
 }
 
+const createTitle = async(req, res) => {
+  const { title, active_flag } = req.body
+  const { rows } = await postgre.query(sql, [title, active_flag])
+  pool.query(queries.createTitle, [rows], (err, result)=>{
+    if(err) throw err;
+    res.status(200).json(result.rows);
+  })
+}
+
 module.exports = {
   getQuestion,
   getQuestionById,
@@ -54,22 +63,5 @@ module.exports = {
   getTitleById,
   getAnswer,
   getAnswerById,
+  createTitle,
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

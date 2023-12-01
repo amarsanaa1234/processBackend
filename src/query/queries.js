@@ -10,6 +10,8 @@ const getAnswer = `SELECT * FROM PUBLIC."ANSWER" WHERE "ACTIVE_FLAG" = 1`;
 
 const getAnswerById = `SELECT * FROM PUBLIC."ANSWER" WHERE "ID" = $1 AND "ACTIVE_FLAG" = 1`;
 
+const createTitle = 'INSERT INTO books(name, price) VALUES($1, $2) RETURNING *'
+
 module.exports = {
     getQuestion,
     getQuestionById,
@@ -17,4 +19,5 @@ module.exports = {
     getTitleById,
     getAnswer,
     getAnswerById,
+    createTitle,
 }
