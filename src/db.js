@@ -1,11 +1,10 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-    host: "localhost",
-    port: 5432,
-    database: "chatGPT",
-    user: "postgres",
-    password: "1234Aa123"
-});
+
+    connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+  
+  })
+
 
 module.exports = pool;
