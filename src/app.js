@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors'); // Import the cors middleware
 const app = express();
 
 const questionRoutes = require('./routers/questionRouter');
@@ -8,9 +9,12 @@ const port = 4000;
 
 app.use(express.json());
 
-app.get('/', (err, res)=>{
+// Use the cors middleware to enable CORS
+app.use(cors());
+
+app.get('/', (req, res) => {
     res.send('Hello World!');
-})
+});
 
 app.use('/title', titleRouter);
 app.use('/question', questionRoutes);
